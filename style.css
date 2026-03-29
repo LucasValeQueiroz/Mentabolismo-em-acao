@@ -632,6 +632,62 @@ main {
 /* Responsive adjustments */
 @media (max-width: 1024px) {
     .hud { flex-direction: column; padding: 1rem; }
-    .board-area { margin: 1rem; border-width: 8px; min-height: 400px;}
+    .board-area { margin: 1rem; border-width: 8px; min-height: 480px;}
     .node { width: 50px; height: 50px; font-size: 1rem; }
+}
+
+@media (max-width: 768px) {
+    main { padding: 0.5rem; }
+    .glass-header h1 { font-size: 1.8rem; }
+    .glass-header p { font-size: 1rem; }
+    
+    /* Layout Vertical HUD (Controles no topo para facilitar a jogabilidade) */
+    .hud { padding: 0.5rem; gap: 0.5rem; }
+    .game-controls { order: -1; min-width: 100%; border: 2px solid var(--accent); padding: 1rem; } 
+    
+    .player-card { padding: 0.8rem; width: 100%; }
+    .player-card h2 { font-size: 1.1rem; }
+    .stats { flex-direction: row; flex-wrap: wrap; padding: 0.5rem; font-size: 0.9rem; gap: 0.2rem; }
+    .stat { justify-content: center; width: 30%; }
+    .current-node-pos { margin-top: 0.5rem; padding: 0.5rem; }
+    .current-node-pos strong { font-size: 0.9rem; }
+    
+    /* Shrink Massivo Proporcional do Tabuleiro Cellular */
+    .board-area {
+        min-height: 550px; /* Garante propagação das linhas % em portrait */
+        margin: 0.5rem 0;
+        border-radius: 30px 40px 35px 50px;
+        border-width: 6px;
+        box-shadow: 0 0 0 6px #083344, 0 0 0 10px #06b6d4, 0 10px 20px 5px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.8);
+    }
+    
+    /* Escala das Casas (Bolinhas e Pinos) */
+    .node { width: 34px; height: 34px; font-size: 0.75rem; border-width: 2px; }
+    .node.type-end { width: 38px; height: 38px; font-size: 0.6rem; }
+    .player-token { width: 22px; height: 22px; border-width: 1px; }
+    .token-p1 { margin-top: -8px; margin-left: -8px; }
+    .token-p2 { margin-top: 8px; margin-left: 8px; }
+    
+    /* Escala das trilhas dinâmicas de traçado SVG (override de atributo) */
+    svg line[stroke-width="16"] { stroke-width: 8px !important; }
+    svg line[stroke-width="10"] { stroke-width: 5px !important; }
+    svg line[stroke-width="4"] { stroke-width: 2px !important; }
+    
+    /* Textos Decorativos de Fundo */
+    .zone-label { font-size: 1.4rem; letter-spacing: 1px; }
+    .citosol-zone .zone-label { top: 1rem; left: 1rem; }
+    .mitocondria-zone .zone-label { top: 1rem; right: 1rem; }
+    .zone-bio-description { font-size: 0.60rem; }
+    .citosol-zone .zone-bio-description { bottom: 1rem; left: 1rem; max-width: 45%; }
+    .mitocondria-zone .zone-bio-description { bottom: 1rem; right: 1rem; max-width: 45%; text-align: right; }
+    
+    /* Cartas Pop-up (Tooltips de Mouse/Touch) */
+    .node-label { width: 140px; font-size: 0.75rem; padding: 0.6rem; border-width: 3px; }
+    .node-label strong { font-size: 0.85rem; margin-bottom: 2px; }
+
+    /* Modal / Start Menu Escalonado */
+    #start-menu h1 { font-size: 2.2rem; text-shadow: 2px 2px 0px #78350f, 0 0 15px rgba(245,158,11,0.6); }
+    #start-menu p { font-size: 1rem; margin-bottom: 1.5rem; }
+    .menu-content { width: 95%; border: none; padding: 0 0.5rem; }
+    #btn-start { padding: 1rem; font-size: 1.2rem; border-radius: 8px; margin-bottom: 0.5rem; }
 }
