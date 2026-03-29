@@ -676,46 +676,46 @@ main {
     .board-area {
         min-width: 0; min-height: 0; 
         width: 100%; 
-        aspect-ratio: 3 / 4; /* Adapta-se fluidamente à orientação vertical */
+        aspect-ratio: 2.2 / 1; /* Retornando ao formato Original Horizontal Lado a Lado! */
         margin: 0;
-        border-width: 1.5vw;
-        border-radius: 8vw 10vw 9vw 12vw;
-        box-shadow: 0 0 0 1vw #083344, 0 0 0 2vw #06b6d4, 0 3vw 6vw 1vw rgba(0,0,0,0.8), inset 0 0 4vw rgba(0,0,0,0.8);
+        border-width: 1vw;
+        border-radius: 6vw 7vw 6vw 8vw;
+        box-shadow: 0 0 0 0.8vw #083344, 0 0 0 1.5vw #06b6d4, 0 2vw 4vw 1vw rgba(0,0,0,0.8), inset 0 0 3vw rgba(0,0,0,0.8);
     }
     
-    /* Peças Redimensionadas Dinamicamente via VW (Tudo afunila proporcionalmente à tela) */
-    .node { width: 8.5vw; height: 8.5vw; font-size: 2.2vw; border-width: 0.5vw; }
-    .node.type-end { width: 11vw; height: 11vw; font-size: 2vw; border-width: 1vw; }
-    .player-token { width: 5.5vw; height: 5.5vw; border-width: 0.4vw; }
-    .token-p1 { margin-top: -2vw; margin-left: -2vw; }
-    .token-p2 { margin-top: 2vw; margin-left: 2vw; }
+    /* Peças Redimensionadas Horizontalmente via VW */
+    .node { width: 7vw; height: 7vw; font-size: 2.2vw; border-width: 0.4vw; }
+    .node.type-end { width: 9vw; height: 9vw; font-size: 1.8vw; border-width: 0.6vw; }
+    .player-token { width: 4.5vw; height: 4.5vw; border-width: 0.3vw; }
+    .token-p1 { margin-top: -1.5vw; margin-left: -1.5vw; }
+    .token-p2 { margin-top: 1.5vw; margin-left: 1.5vw; }
     
     /* Trilhas Dinâmicas de Traçado SVG (Escalando com overrides VW) */
-    svg line[stroke-width="16"] { stroke-width: 2.5vw !important; }
-    svg line[stroke-width="10"] { stroke-width: 1.5vw !important; }
-    svg line[stroke-width="4"] { stroke-width: 0.8vw !important; }
+    svg line[stroke-width="16"] { stroke-width: 1.8vw !important; }
+    svg line[stroke-width="10"] { stroke-width: 1.1vw !important; }
+    svg line[stroke-width="4"] { stroke-width: 0.5vw !important; }
     
-    /* Gira o Fundo da Célula para o Formato de Queda Vertical */
+    /* Zonas Originais Restauradas (Lado a Lado) na Horizontal */
     .citosol-zone {
-        width: 100%; height: 38%;
+        width: 38%; height: 100%;
         left: 0; top: 0;
-        border-right: none;
-        border-bottom: 2px dashed rgba(255,255,255,0.2);
-        border-radius: 8vw 10vw 0 0;
+        border-bottom: none;
+        border-right: 2px dashed rgba(255,255,255,0.2);
+        border-radius: 6vw 0 0 8vw;
     }
     .mitocondria-zone {
-        width: 100%; height: 62%;
-        left: 0; top: 38%;
-        border-radius: 0 0 9vw 12vw;
+        width: 62%; height: 100%;
+        left: auto; right: 0; top: 0;
+        border-radius: 0 7vw 6vw 0;
     }
     
-    /* Textos do Fundo Escalados */
-    .zone-label { font-size: 8vw; letter-spacing: 0.5vw; opacity: 0.3; }
-    .citosol-zone .zone-label { top: 3vw; left: 3vw; }
-    .citosol-zone .zone-bio-description { top: 3vw; right: 3vw; max-width: 45%; text-align: right; bottom: auto; left: auto; }
+    /* Textos do Fundo Escalados e Reposicionados Originalmente */
+    .zone-label { font-size: 6vw; letter-spacing: 0.3vw; opacity: 0.3; }
+    .citosol-zone .zone-label { top: 2vw; left: 2vw; }
+    .citosol-zone .zone-bio-description { bottom: 2vw; left: 2vw; top: auto; right: auto; max-width: 80%; text-align: left; }
     
-    .mitocondria-zone .zone-label { top: 3vw; right: 3vw; }
-    .mitocondria-zone .zone-bio-description { bottom: 3vw; left: 3vw; max-width: 45%; text-align: left; }
+    .mitocondria-zone .zone-label { top: 2vw; right: 2vw; }
+    .mitocondria-zone .zone-bio-description { bottom: 2vw; right: 2vw; top: auto; left: auto; max-width: 80%; text-align: right; }
     
     /* Tooltips */
     .node-label { width: 35vw; font-size: 2.5vw; padding: 2vw; border-width: 1vw; }
