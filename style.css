@@ -643,87 +643,73 @@ main {
 }
 
 @media (max-width: 768px) {
-    main { padding: 0.5rem; }
+    main { padding: 0.5rem; overflow: hidden; }
     
-    /* Header Super Compacto e Legível */
+    /* Header Super Compacto VW */
     .glass-header { padding: 0.6rem; }
-    .glass-header h1 { font-size: 1.4rem; line-height: 1.2; margin-bottom: 4px; }
-    .glass-header p { font-size: 0.8rem; letter-spacing: 0; }
+    .glass-header h1 { font-size: 6vw; line-height: 1.2; margin-bottom: 2px; }
+    .glass-header p { font-size: 3.5vw; letter-spacing: 0; }
     
     /* Layout Vertical HUD */
     .hud { padding: 0.5rem; gap: 0.5rem; }
     
     /* Controles Redesenhados (Compactos Lado a Lado) */
     .game-controls { 
-        order: -1; 
-        min-width: 100%; 
-        border: 2px solid var(--accent); 
-        padding: 0.5rem; 
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 0.8rem;
+        order: -1; min-width: 100%; border: 2px solid var(--accent); padding: 0.5rem; 
+        display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1vw;
     }
-    #status-message { width: 100%; font-size: 0.85rem; padding: 0.4rem; margin: 0; }
-    .primary-btn#btn-roll { padding: 0.8rem 1.2rem; font-size: 1.1rem; flex: 1; }
-    #dice-result { width: 55px; height: 55px; font-size: 1.8rem; margin: 0; }
-    #btn-rules, #btn-reset { width: 100%; margin-top: 0 !important; font-size: 0.9rem; padding: 0.5rem; }
+    #status-message { width: 100%; font-size: 3.5vw; padding: 1.5vw; margin: 0; }
+    .primary-btn#btn-roll { padding: 3vw 4vw; font-size: 4.5vw; flex: 1; }
+    #dice-result { width: 12vw; height: 12vw; font-size: 6vw; margin: 0; }
+    #btn-rules, #btn-reset { width: 100%; font-size: 3.5vw; padding: 2.5vw; margin-top: 0 !important; }
     
-    .player-card { padding: 0.8rem; width: 100%; }
-    .player-card h2 { font-size: 1.1rem; }
-    .stats { flex-direction: row; flex-wrap: wrap; padding: 0.5rem; font-size: 0.9rem; gap: 0.2rem; }
+    .player-card { padding: 2vw; width: 100%; }
+    .player-card h2 { font-size: 4vw; }
+    .stats { flex-direction: row; flex-wrap: wrap; padding: 1vw; font-size: 3.5vw; gap: 0.5vw; }
     .stat { justify-content: center; width: 30%; }
-    .current-node-pos { margin-top: 0.5rem; padding: 0.5rem; }
-    .current-node-pos strong { font-size: 0.9rem; }
+    .current-node-pos { margin-top: 2vw; padding: 2vw; }
+    .current-node-pos strong { font-size: 3.5vw; }
     
-    /* Navigational Scroll Wrapper para o Celular */
-    .board-scroll-wrapper {
-        width: 100vw;
-        max-width: 100%;
-        overflow-x: auto;
-        padding: 0.5rem 0 1rem;
-        -webkit-overflow-scrolling: touch;
-    }
+    /* Tabuleiro "Shrink-to-Fit" Absoluto (Zero Scroll, Encaixe Perfeito no Celular) */
+    .board-scroll-wrapper { width: 100%; overflow: hidden; padding: 2vw 0; }
     
-    /* Impedindo o "Esmagamento" Visual através de pan & scan */
     .board-area {
-        min-width: 800px; /* Força a manutenção original */
-        min-height: 500px; 
-        margin: 0 1rem;
-        border-radius: 40px 50px 45px 60px;
-        border-width: 6px;
-        box-shadow: 0 0 0 6px #083344, 0 0 0 10px #06b6d4, 0 10px 20px 5px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.8);
+        min-width: 0; min-height: 0; 
+        width: 100%; 
+        aspect-ratio: 3 / 4; /* Adapta-se fluidamente à orientação vertical */
+        margin: 0;
+        border-width: 1.5vw;
+        border-radius: 8vw 10vw 9vw 12vw;
+        box-shadow: 0 0 0 1vw #083344, 0 0 0 2vw #06b6d4, 0 3vw 6vw 1vw rgba(0,0,0,0.8), inset 0 0 4vw rgba(0,0,0,0.8);
     }
     
-    /* Restaurado tamanho para boa visibilidade touch */
-    .node { width: 44px; height: 44px; font-size: 0.85rem; border-width: 2px; }
-    .node.type-end { width: 50px; height: 50px; font-size: 0.75rem; }
-    .player-token { width: 28px; height: 28px; border-width: 2px; }
-    .token-p1 { margin-top: -10px; margin-left: -10px; }
-    .token-p2 { margin-top: 10px; margin-left: 10px; }
+    /* Peças Redimensionadas Dinamicamente via VW (Tudo afunila proporcionalmente à tela) */
+    .node { width: 8.5vw; height: 8.5vw; font-size: 2.2vw; border-width: 0.5vw; }
+    .node.type-end { width: 11vw; height: 11vw; font-size: 2vw; border-width: 1vw; }
+    .player-token { width: 5.5vw; height: 5.5vw; border-width: 0.4vw; }
+    .token-p1 { margin-top: -2vw; margin-left: -2vw; }
+    .token-p2 { margin-top: 2vw; margin-left: 2vw; }
     
-    /* Escala das trilhas dinâmicas de traçado SVG (override de atributo) */
-    svg line[stroke-width="16"] { stroke-width: 8px !important; }
-    svg line[stroke-width="10"] { stroke-width: 5px !important; }
-    svg line[stroke-width="4"] { stroke-width: 2px !important; }
+    /* Trilhas Dinâmicas de Traçado SVG (Escalando com overrides VW) */
+    svg line[stroke-width="16"] { stroke-width: 2.5vw !important; }
+    svg line[stroke-width="10"] { stroke-width: 1.5vw !important; }
+    svg line[stroke-width="4"] { stroke-width: 0.8vw !important; }
     
-    /* Textos Decorativos de Fundo */
-    .zone-label { font-size: 1.4rem; letter-spacing: 1px; }
-    .citosol-zone .zone-label { top: 1rem; left: 1rem; }
-    .mitocondria-zone .zone-label { top: 1rem; right: 1rem; }
-    .zone-bio-description { font-size: 0.60rem; }
-    .citosol-zone .zone-bio-description { bottom: 1rem; left: 1rem; max-width: 45%; }
-    .mitocondria-zone .zone-bio-description { bottom: 1rem; right: 1rem; max-width: 45%; text-align: right; }
+    /* Textos do Fundo Escalados */
+    .zone-label { font-size: 8vw; letter-spacing: 0.5vw; opacity: 0.3; }
+    .citosol-zone .zone-label { top: 3vw; left: 3vw; }
+    .mitocondria-zone .zone-label { top: 3vw; right: 3vw; }
+    .zone-bio-description { font-size: 2.2vw; }
+    .citosol-zone .zone-bio-description { bottom: 3vw; left: 3vw; max-width: 45%; }
+    .mitocondria-zone .zone-bio-description { bottom: 3vw; right: 3vw; max-width: 45%; text-align: right; }
     
-    /* Cartas Pop-up (Tooltips de Mouse/Touch) */
-    .node-label { width: 140px; font-size: 0.75rem; padding: 0.6rem; border-width: 3px; }
-    .node-label strong { font-size: 0.85rem; margin-bottom: 2px; }
+    /* Tooltips */
+    .node-label { width: 35vw; font-size: 2.5vw; padding: 2vw; border-width: 1vw; }
+    .node-label strong { font-size: 3vw; margin-bottom: 0.5vw; }
 
-    /* Modal / Start Menu Escalonado */
-    #start-menu h1 { font-size: 2.2rem; text-shadow: 2px 2px 0px #78350f, 0 0 15px rgba(245,158,11,0.6); }
-    #start-menu p { font-size: 1rem; margin-bottom: 1.5rem; }
-    .menu-content { width: 95%; border: none; padding: 0 0.5rem; }
-    #btn-start { padding: 1rem; font-size: 1.2rem; border-radius: 8px; margin-bottom: 0.5rem; }
+    /* Modal / Start Menu Fluid Setup */
+    #start-menu h1 { font-size: 10vw; text-shadow: 0.5vw 0.5vw 0px #78350f, 0 0 3vw rgba(245,158,11,0.6); }
+    #start-menu p { font-size: 4vw; margin-bottom: 5vw; }
+    .menu-content { width: 95%; border: none; padding: 0 2vw; }
+    #btn-start { padding: 4vw; font-size: 5vw; border-radius: 2vw; margin-bottom: 2vw; }
 }
