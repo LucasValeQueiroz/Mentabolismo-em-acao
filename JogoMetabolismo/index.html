@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metabolismo em Ação - Jogo de Tabuleiro Web</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Menu Inicial com a imagem de fundo espelhada -->
+    <div id="start-menu">
+        <div class="bg-mirror-container">
+            <div class="side-mirror left-mirror"></div>
+            <img class="center-img" src="../imagem gerada.png" alt="Capa">
+            <div class="side-mirror right-mirror"></div>
+        </div>
+        <div class="menu-content glass-panel" style="z-index: 10;">
+            <button id="btn-start" class="primary-btn"
+                style="width:100%; margin-bottom:1rem; font-size:1.5rem; padding:1.2rem;">Iniciar Partida</button>
+            <button id="btn-menu-rules" class="secondary-btn" style="width:100%; font-size:1.1rem; padding:1rem;">Como
+                Jogar</button>
+        </div>
+    </div>
+
+    <!-- Container do Jogo (Oculto inicialmente) -->
+    <div id="app" style="display: none;">
+        <header class="glass-header">
+            <h1>Metabolismo em Ação</h1>
+            <p>A Corrida da Glicose x Ácido Graxo</p>
+        </header>
+
+        <main>
+            <section class="hud">
+                <div class="player-card glass-panel" id="card-p1">
+                    <h2>Molécula 1: Glicose <br><span>(Carboidrato)</span></h2>
+                    <div class="stats">
+                        <div class="stat" title="Energia útil"><span class="icon">⚡</span> ATP: <b id="atp-p1">0</b>
+                        </div>
+                        <div class="stat" title="Poder redutor da Glicólise e Krebs"><span class="icon">🔵</span> NADH:
+                            <b id="nadh-p1">0</b>
+                        </div>
+                        <div class="stat" title="Poder redutor"><span class="icon">🟡</span> FADH₂: <b
+                                id="fadh-p1">0</b></div>
+                    </div>
+                    <div class="current-node-pos">
+                        <div class="pos-label">📍 POSIÇÃO ATUAL:</div>
+                        <strong id="pos-name-p1">Início</strong>
+                        <span id="pos-desc-p1">-</span>
+                    </div>
+                </div>
+
+                <div class="game-controls glass-panel">
+                    <div id="status-message">Vez do Jogador: Glicose</div>
+                    <button id="btn-roll" class="primary-btn">Rolar Dado 🎲</button>
+                    <div id="dice-result">-</div>
+                    <button id="btn-reset" class="secondary-btn" style="display:none;">Jogar Novamente</button>
+                    <button id="btn-rules" class="secondary-btn" style="margin-top: 10px;">Ver Regras</button>
+                </div>
+
+                <div class="player-card glass-panel" id="card-p2">
+                    <h2>Molécula 2: Ácido Graxo <br><span>(Lipídio)</span></h2>
+                    <div class="stats">
+                        <div class="stat" title="Energia útil"><span class="icon">⚡</span> ATP: <b id="atp-p2">0</b>
+                        </div>
+                        <div class="stat" title="Poder redutor da Beta-Ox e Krebs"><span class="icon">🔵</span> NADH: <b
+                                id="nadh-p2">0</b></div>
+                        <div class="stat" title="Poder redutor da Beta-Ox e Krebs"><span class="icon">🟡</span> FADH₂:
+                            <b id="fadh-p2">0</b>
+                        </div>
+                    </div>
+                    <div class="current-node-pos">
+                        <div class="pos-label">📍 POSIÇÃO ATUAL:</div>
+                        <strong id="pos-name-p2">Início</strong>
+                        <span id="pos-desc-p2">-</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="board-area">
+                <div class="zone citosol-zone">
+                    <div class="zone-label">Citosol</div>
+                    <div class="zone-bio-description">Glicólise & Ativação de Lipídios</div>
+                </div>
+                <div class="zone mitocondria-zone">
+                    <div class="zone-label">Mitocôndria</div>
+                    <div class="zone-bio-description">Matriz: Ciclo de Krebs & Beta-Oxidação<br>Cristas: Cadeia
+                        Respiratória</div>
+                </div>
+
+                <div id="board-nodes">
+                    <!-- Gerado pelo Javascript (nós, svg, pinos) -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Modals -->
+        <div id="event-modal" class="modal-overlay hidden">
+            <div class="modal-content glass-panel">
+                <h2 id="modal-title">Evento Clínico/Metabólico!</h2>
+                <div class="modal-icon" style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+                <p id="modal-desc" style="font-size: 1.2rem; margin-bottom: 2rem;"></p>
+                <button id="btn-modal-close" class="primary-btn">Continuar</button>
+            </div>
+        </div>
+
+        <div id="rules-modal" class="modal-overlay hidden">
+            <div class="modal-content glass-panel rules-content" style="max-width: 600px;">
+                <h2 style="color: #0284c7; margin-bottom: 1rem;">📚 Regras do Jogo</h2>
+                <ul
+                    style="text-align: left; margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6; color: #44403c; font-weight: 500;">
+                    <li><strong>Objetivo:</strong> Chegar ao final com a maior quantidade de energia (ATP).</li>
+                    <li><strong>Percurso:</strong> A Glicose faz a Glicólise; o Ácido Graxo faz a Beta-Oxidação. Ambos
+                        se encontram no <i>Acetil-CoA</i> e seguem para o Ciclo de Krebs e Cadeia Respiratória.</li>
+                    <li><strong>Economia:</strong> Você ganha/gasta ATP e ganha moléculas transportadoras (NADH e
+                        FADH₂).</li>
+                    <li><strong>Cadeia Respiratória:</strong> Todo o seu NADH é transformado livremente em 3 ATPs cada,
+                        e o FADH₂ em 2 ATPs cada ao final.</li>
+                    <li><strong>Casas Laranjas:</strong> Eventos clínicos/fisiológicos (ex: jejum, diabetes) causam
+                        efeitos surpresas!</li>
+                </ul>
+                <button id="btn-rules-close" class="primary-btn">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
