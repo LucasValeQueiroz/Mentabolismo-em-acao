@@ -34,6 +34,17 @@ const paths = {
     p2: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] // AG -> AcetilCoA -> Krebs -> Cadeia
 };
 
+// --- Mobile Dynamic Matrix Rotation ---
+// Se for celular (tela vertical), invertemos o eixo gráfico (X vira Y e Y vira X) 
+// transformando a corrida horizontal em uma belíssima corrida vertical de queda!
+if (window.innerWidth <= 768) {
+    nodes.forEach(node => {
+        const temp = node.x;
+        node.x = node.y;
+        node.y = temp;
+    });
+}
+
 const events = [
     {
         title: "Jejum Prolongado", desc: "Gliconeogênese ativada no fígado! Se você é Glicose, volte 1 casa. Se é Ácido Graxo, avance 1 casa (energia focada na quebra de lipídios).", apply: (p) => {

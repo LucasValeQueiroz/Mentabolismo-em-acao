@@ -695,13 +695,27 @@ main {
     svg line[stroke-width="10"] { stroke-width: 1.5vw !important; }
     svg line[stroke-width="4"] { stroke-width: 0.8vw !important; }
     
+    /* Gira o Fundo da Célula para o Formato de Queda Vertical */
+    .citosol-zone {
+        width: 100%; height: 38%;
+        left: 0; top: 0;
+        border-right: none;
+        border-bottom: 2px dashed rgba(255,255,255,0.2);
+        border-radius: 8vw 10vw 0 0;
+    }
+    .mitocondria-zone {
+        width: 100%; height: 62%;
+        left: 0; top: 38%;
+        border-radius: 0 0 9vw 12vw;
+    }
+    
     /* Textos do Fundo Escalados */
     .zone-label { font-size: 8vw; letter-spacing: 0.5vw; opacity: 0.3; }
     .citosol-zone .zone-label { top: 3vw; left: 3vw; }
+    .citosol-zone .zone-bio-description { top: 3vw; right: 3vw; max-width: 45%; text-align: right; bottom: auto; left: auto; }
+    
     .mitocondria-zone .zone-label { top: 3vw; right: 3vw; }
-    .zone-bio-description { font-size: 2.2vw; }
-    .citosol-zone .zone-bio-description { bottom: 3vw; left: 3vw; max-width: 45%; }
-    .mitocondria-zone .zone-bio-description { bottom: 3vw; right: 3vw; max-width: 45%; text-align: right; }
+    .mitocondria-zone .zone-bio-description { bottom: 3vw; left: 3vw; max-width: 45%; text-align: left; }
     
     /* Tooltips */
     .node-label { width: 35vw; font-size: 2.5vw; padding: 2vw; border-width: 1vw; }
