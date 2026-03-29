@@ -638,12 +638,32 @@ main {
 
 @media (max-width: 768px) {
     main { padding: 0.5rem; }
-    .glass-header h1 { font-size: 1.8rem; }
-    .glass-header p { font-size: 1rem; }
     
-    /* Layout Vertical HUD (Controles no topo para facilitar a jogabilidade) */
+    /* Header Super Compacto e Legível */
+    .glass-header { padding: 0.6rem; }
+    .glass-header h1 { font-size: 1.4rem; line-height: 1.2; margin-bottom: 4px; }
+    .glass-header p { font-size: 0.8rem; letter-spacing: 0; }
+    
+    /* Layout Vertical HUD */
     .hud { padding: 0.5rem; gap: 0.5rem; }
-    .game-controls { order: -1; min-width: 100%; border: 2px solid var(--accent); padding: 1rem; } 
+    
+    /* Controles Redesenhados (Compactos Lado a Lado) */
+    .game-controls { 
+        order: -1; 
+        min-width: 100%; 
+        border: 2px solid var(--accent); 
+        padding: 0.5rem; 
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    #status-message { width: 100%; font-size: 0.85rem; padding: 0.4rem; margin: 0; }
+    .primary-btn#btn-roll { padding: 0.8rem 1.2rem; font-size: 1.1rem; flex: 1; }
+    #dice-result { width: 55px; height: 55px; font-size: 1.8rem; margin: 0; }
+    #btn-rules, #btn-reset { width: 100%; margin-top: 0 !important; font-size: 0.9rem; padding: 0.5rem; }
     
     .player-card { padding: 0.8rem; width: 100%; }
     .player-card h2 { font-size: 1.1rem; }
