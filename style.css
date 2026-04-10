@@ -323,49 +323,46 @@ main {
     box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
-/* --- Exibição e estilo dos Títulos de Fundo (Citosol e Mitocôndria) --- */
+/* --- Exibição e estilo dos Títulos de Fundo --- */
 .zone {
     position: absolute;
-    top: 0;
-    height: 100%;
-    padding: 2rem;
-    pointer-events: none; /* Permite clicar nas casas do jogo através do texto */
+    top: 2%; /* Afasta um pouquinho do teto */
+    padding: 1rem 2rem;
+    pointer-events: none;
     z-index: 5;
     display: flex;
     flex-direction: column;
 }
 
 .citosol-zone {
-    left: 0;
-    width: 45%;
+    left: 2%;
     align-items: flex-start;
     text-align: left;
 }
 
 .mitocondria-zone {
-    right: 0;
-    width: 45%;
+    right: 2%;
     align-items: flex-end;
     text-align: right;
 }
 
 .zone-label {
-    font-size: 3rem;
+    font-size: 2.2rem; /* Diminuído para não sobrepor as casas */
     font-weight: 900;
-    /* Cor branca com opacidade para dar um efeito integrado ao fundo */
-    color: rgba(255, 255, 255, 0.35); 
+    color: rgba(255, 255, 255, 0.4); 
     text-transform: uppercase;
-    letter-spacing: 5px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    margin-bottom: 0.2rem;
+    line-height: 1; /* Deixa o título mais compacto */
 }
 
 .zone-bio-description {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Subtítulo menor e elegante */
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6);
     text-shadow: 1px 1px 5px rgba(0,0,0,0.9);
-    margin-top: 0.5rem;
-    max-width: 80%;
+    max-width: 300px; /* Impede que o texto invada o meio do tabuleiro */
 }
 
 #board-nodes {
