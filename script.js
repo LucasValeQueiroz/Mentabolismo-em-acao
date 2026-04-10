@@ -1,70 +1,45 @@
 // --- Game Data ---
+// COORDENADAS ATUALIZADAS PARA O FORMATO OVAL E MITOCÔNDRIA DE FEIJÃO
 const nodes = [
-    // Glicólise Path (0-4) -> Citosol (Esquerda, parte superior)
-    { id: 0, x: 8, y: 20, name: "Glicose", desc: "Entra na célula", zone: "citosol", type: "normal" },
-    { id: 1, x: 20, y: 20, name: "Investimento", desc: "Hexoquinase: Gasto de -2 ATP", zone: "citosol", effect: { atp: -2 }, type: "normal" },
-    { id: 2, x: 32, y: 20, name: "Clivagem", desc: "Surgem trioses (Aldolase)", zone: "citosol", type: "normal" },
-    { id: 3, x: 32, y: 35, name: "Pagamento", desc: "Gera energia: +4 ATP, +2 NADH", zone: "citosol", effect: { atp: 4, nadh: 2 }, type: "normal" },
-    { id: 4, x: 32, y: 50, name: "Piruvato", desc: "Produto final glicolítico", zone: "citosol", type: "event" },
+    // Glicólise Path (Citosol - Metade Superior Esquerda)
+    { id: 0, x: 10, y: 30, name: "Glicose", desc: "Entra na célula", zone: "citosol", type: "normal" },
+    { id: 1, x: 22, y: 30, name: "Investimento", desc: "Hexoquinase: Gasto de -2 ATP", zone: "citosol", effect: { atp: -2 }, type: "normal" },
+    { id: 2, x: 34, y: 30, name: "Clivagem", desc: "Surgem trioses (Aldolase)", zone: "citosol", type: "normal" },
+    { id: 3, x: 46, y: 30, name: "Pagamento", desc: "Gera energia: +4 ATP, +2 NADH", zone: "citosol", effect: { atp: 4, nadh: 2 }, type: "normal" },
+    { id: 4, x: 46, y: 50, name: "Piruvato", desc: "Produto final glicolítico", zone: "citosol", type: "event" },
 
-    // Beta-Oxidação Path (5-9) -> Citosol e Mitocôndria (Esquerda, parte inferior)
-    { id: 5, x: 8, y: 80, name: "Ácido Graxo", desc: "Quebra de lipídio", zone: "citosol", type: "normal" },
-    { id: 6, x: 20, y: 80, name: "Ativação", desc: "Uso de Acil-CoA: -2 ATP", zone: "citosol", effect: { atp: -2 }, type: "normal" },
-    { id: 7, x: 32, y: 80, name: "Carnitina", desc: "Translocação mitocondrial", zone: "mitocondria", type: "event" },
-    { id: 8, x: 42, y: 80, name: "Beta-Ox 1", desc: "Primeiro turno: +1 NADH, +1 FADH₂", zone: "mitocondria", effect: { nadh: 1, fadh: 1 }, type: "normal" },
-    { id: 9, x: 42, y: 65, name: "Beta-Ox 2", desc: "Ciclos seguintes: +1 NADH, +1 FADH₂", zone: "mitocondria", effect: { nadh: 1, fadh: 1 }, type: "normal" },
+    // Beta-Oxidação Path (Citosol para Mitocôndria - Metade Inferior)
+    { id: 5, x: 10, y: 70, name: "Ácido Graxo", desc: "Quebra de lipídio", zone: "citosol", type: "normal" },
+    { id: 6, x: 22, y: 70, name: "Ativação", desc: "Uso de Acil-CoA: -2 ATP", zone: "citosol", effect: { atp: -2 }, type: "normal" },
+    { id: 7, x: 34, y: 70, name: "Carnitina", desc: "Translocação mitocondrial", zone: "citosol", type: "event" },
+    { id: 8, x: 60, y: 75, name: "Beta-Ox 1", desc: "Primeiro turno: +1 NADH, +1 FADH₂", zone: "mitocondria", effect: { nadh: 1, fadh: 1 }, type: "normal" },
+    { id: 9, x: 72, y: 75, name: "Beta-Ox 2", desc: "Ciclos seguintes: +1 NADH, +1 FADH₂", zone: "mitocondria", effect: { nadh: 1, fadh: 1 }, type: "normal" },
 
-    // Encruzilhada (10) -> Dentro da Mitocôndria (Entrada Direta)
-    { id: 10, x: 44, y: 50, name: "Acetil-CoA", desc: "Interseção universal", zone: "mitocondria", type: "normal" },
+    // Encruzilhada Universal (Entrada da Mitocôndria)
+    { id: 10, x: 58, y: 50, name: "Acetil-CoA", desc: "Interseção universal", zone: "mitocondria", type: "normal" },
 
-    // Krebs Cycle (11-14) -> Matriz Mitocondrial (Formato de Diamante Perfeito)
-    { id: 11, x: 55, y: 50, name: "Citrato", desc: "Condensação inicial", zone: "mitocondria", type: "normal" },
-    { id: 12, x: 65, y: 25, name: "Descarboxilação", desc: "Isocitrato para alfa-KG: +2 NADH", zone: "mitocondria", effect: { nadh: 2 }, type: "normal" },
-    { id: 13, x: 75, y: 50, name: "Fosforilação", desc: "Succinil-CoA > Succinato: +1 ATP", zone: "mitocondria", effect: { atp: 1 }, type: "event" },
-    { id: 14, x: 65, y: 75, name: "Malato", desc: "Regeneração final: +1 FADH₂, +1 NADH", zone: "mitocondria", effect: { fadh: 1, nadh: 1 }, type: "normal" },
+    // Ciclo de Krebs (Círculo na Matriz Mitocondrial)
+    { id: 11, x: 70, y: 35, name: "Citrato", desc: "Condensação inicial", zone: "mitocondria", type: "normal" },
+    { id: 12, x: 82, y: 50, name: "Descarboxilação", desc: "Gera +2 NADH", zone: "mitocondria", effect: { nadh: 2 }, type: "normal" },
+    { id: 13, x: 70, y: 65, name: "Fosforilação", desc: "Gera +1 ATP", zone: "mitocondria", effect: { atp: 1 }, type: "event" },
+    { id: 14, x: 58, y: 65, name: "Malato", desc: "Regeneração final", zone: "mitocondria", effect: { fadh: 1, nadh: 1 }, type: "normal" },
 
-    // Cadeia Respiratória e Fim (15-16) -> Cristas Mitocondriais / Saída Horizontal
-    { id: 15, x: 88, y: 75, name: "Cadeia Respiratória", desc: "Fosforilação Oxidativa (Troca os transportadores por muito ATP)", zone: "mitocondria", effect: "exchange", type: "event" },
-    { id: 16, x: 88, y: 50, name: "FIM", desc: "Contagem de rentabilidade", zone: "mitocondria", effect: "end", type: "end" },
+    // Cadeia Respiratória e Fim (Cristas / Parte inferior direita)
+    { id: 15, x: 85, y: 80, name: "Cadeia Respiratória", desc: "Fosforilação Oxidativa", zone: "mitocondria", effect: "exchange", type: "event" },
+    { id: 16, x: 95, y: 80, name: "FIM", desc: "Contagem de energia", zone: "mitocondria", effect: "end", type: "end" },
 ];
 
-// Paths definition matching the ID sequence
 const paths = {
-    p1: [0, 1, 2, 3, 4, 10, 11, 12, 13, 14, 15, 16], // Glicose -> AcetilCoA -> Krebs -> Cadeia
-    p2: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] // AG -> AcetilCoA -> Krebs -> Cadeia
+    p1: [0, 1, 2, 3, 4, 10, 11, 12, 13, 14, 15, 16],
+    p2: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 };
 
 const events = [
-    {
-        title: "Jejum Prolongado", desc: "Gliconeogênese ativada no fígado! Se você é Glicose, volte 1 casa. Se é Ácido Graxo, avance 1 casa (energia focada na quebra de lipídios).", apply: (p) => {
-            if (p.id === 'p1') { p.bonusMove = -1; return true; } // Bad
-            else { p.bonusMove = 1; return false; } // Good
-        }
-    },
-    {
-        title: "Exercício Intenso!", desc: "Contração muscular rápida! A epinefrina mobiliza combustíveis. Ganhe +2 ATP imediatamente pelo esforço.", apply: (p) => {
-            p.atp += 2; return false; // Good
-        }
-    },
-    {
-        title: "Diabetes Não Tratada", desc: "A insulina está em falta. A Glicose não consegue entrar na célula adequadamente: perca a próxima rodada! O Ácido Graxo produz corpos cetônicos (ganha +1 NADH extra).", apply: (p) => {
-            if (p.id === 'p1') { p.skipTurn = true; return true; } // Bad
-            else { p.nadh += 1; return false; } // Good
-        }
-    },
-    {
-        title: "Deficiência de Carnitina", desc: "Dificuldade na translocação de Acil-CoA para a mitocôndria! Se for Lipídio (Ácido Graxo), perca sua vez de jogar.", apply: (p) => {
-            if (p.id === 'p2') { p.skipTurn = true; return true; } // Bad
-            return false;
-        }
-    },
-    {
-        title: "Hipóxia Menor (Falta de O₂)", desc: "A cadeia respiratória reduz a velocidade. Seu poder redutor se acumula, perca 1 NADH ou 1 FADH₂ (oxidado sem geração de ATP na via).", apply: (p) => {
-            if (p.nadh > 0) { p.nadh--; return true; } // Bad
-            else if (p.fadh > 0) { p.fadh--; return true; } // Bad
-            return true; // Bad
-        }
-    }
+    { title: "Jejum Prolongado", desc: "Gliconeogênese ativada! Se você é Glicose, volte 1 casa. Se é Ácido Graxo, avance 1 casa.", apply: (p) => { if (p.id === 'p1') { p.bonusMove = -1; return true; } else { p.bonusMove = 1; return false; } } },
+    { title: "Exercício Intenso!", desc: "Contração muscular rápida! Ganhe +2 ATP imediatamente pelo esforço.", apply: (p) => { p.atp += 2; return false; } },
+    { title: "Diabetes Não Tratada", desc: "Falta de insulina. Glicose perde a próxima rodada! Ácido Graxo produz corpos cetônicos (+1 NADH).", apply: (p) => { if (p.id === 'p1') { p.skipTurn = true; return true; } else { p.nadh += 1; return false; } } },
+    { title: "Deficiência de Carnitina", desc: "Dificuldade na translocação de Acil-CoA! Se for Ácido Graxo, perca sua vez.", apply: (p) => { if (p.id === 'p2') { p.skipTurn = true; return true; } return false; } },
+    { title: "Hipóxia Menor (Falta de O₂)", desc: "Perca 1 NADH ou 1 FADH₂ (oxidado sem geração de ATP na via).", apply: (p) => { if (p.nadh > 0) { p.nadh--; return true; } else if (p.fadh > 0) { p.fadh--; return true; } return true; } }
 ];
 
 let players = {
@@ -75,11 +50,9 @@ let players = {
 let currentPlayer = 'p1';
 let gameFinished = false;
 
-// --- Rendering ---
 const boardContainer = document.getElementById('board-nodes');
 
 function renderBoard() {
-    // 1. Render Lines (SVG)
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.style.position = "absolute";
     svg.style.top = "0"; svg.style.left = "0";
@@ -91,34 +64,23 @@ function renderBoard() {
     function drawLine(n1, n2, glowColor) {
         if (!n1 || !n2) return;
 
-        // Background thick outline (engraved look)
         const outline = document.createElementNS("http://www.w3.org/2000/svg", "line");
         outline.setAttribute("x1", n1.x + "%"); outline.setAttribute("y1", n1.y + "%");
         outline.setAttribute("x2", n2.x + "%"); outline.setAttribute("y2", n2.y + "%");
-        outline.setAttribute("stroke", "#1e293b");
+        outline.setAttribute("stroke", "rgba(0,0,0,0.4)");
         outline.setAttribute("stroke-width", "16");
         outline.setAttribute("stroke-linecap", "round");
 
-        // Inner actual track line (bottom shadow)
-        const track = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        track.setAttribute("x1", n1.x + "%"); track.setAttribute("y1", n1.y + "%");
-        track.setAttribute("x2", n2.x + "%"); track.setAttribute("y2", n2.y + "%");
-        track.setAttribute("stroke", "#0f172a");
-        track.setAttribute("stroke-width", "10");
-        track.setAttribute("stroke-linecap", "round");
-
-        // The colored path indicator line
         const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
         line.setAttribute("x1", n1.x + "%"); line.setAttribute("y1", n1.y + "%");
         line.setAttribute("x2", n2.x + "%"); line.setAttribute("y2", n2.y + "%");
         line.setAttribute("stroke", glowColor);
-        line.setAttribute("stroke-width", "4");
+        line.setAttribute("stroke-width", "6");
         line.setAttribute("stroke-dasharray", "8,8");
         line.setAttribute("stroke-linecap", "round");
-        line.setAttribute("opacity", "0.8");
+        line.setAttribute("filter", "drop-shadow(0px 0px 5px " + glowColor + ")"); // Efeito GLOW na linha
 
         svg.appendChild(outline);
-        svg.appendChild(track);
         svg.appendChild(line);
     }
 
@@ -128,11 +90,9 @@ function renderBoard() {
     for (let i = 0; i < paths.p2.length - 1; i++) {
         drawLine(nodes[paths.p2[i]], nodes[paths.p2[i + 1]], "#f472b6");
     }
-    // Fechar o ciclo de Krebs visualmente (Malato -> Citrato/Acetil-CoA)
-    drawLine(nodes[14], nodes[11], "#475569");
+    // FECHAMENTO CIRCULAR DO KREBS (Malato -> Citrato)
+    drawLine(nodes[14], nodes[11], "#94a3b8");
 
-
-    // 2. Render Nodes
     nodes.forEach(node => {
         const el = document.createElement('div');
         el.className = `node type-${node.type}`;
@@ -140,7 +100,6 @@ function renderBoard() {
         el.style.top = `${node.y}%`;
         el.id = `node-${node.id}`;
 
-        // Show Icon or ID
         let content = node.id;
         if (node.type === 'event') content = "⚠️";
         if (node.type === 'end') content = "FIM";
@@ -155,7 +114,6 @@ function renderBoard() {
         boardContainer.appendChild(el);
     });
 
-    // 3. Render Tokens
     const tk1 = document.createElement('div');
     tk1.className = 'player-token token-p1';
     tk1.id = 'token-p1';

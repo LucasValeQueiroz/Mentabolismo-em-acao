@@ -2,10 +2,7 @@
 
 :root {
     --bg-dark: #121015;
-    --table-color: #1a1622;
-    --board-edge: #27272a;
-    --citosol-color: #0d4a36;
-    --mitocondria-color: #581c1c;
+    --table-color: #0f172a;
     --text-primary: #f8fafc;
     --text-muted: #94a3b8;
     --accent: #f59e0b;
@@ -20,22 +17,29 @@
 
 body {
     background-color: var(--table-color);
-    /* Sci-fi table/dark wood texture representation */
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.83-1.66 1.66-.83-.83.83-.83zM58.33 4.14l.83.83-4.98 4.98-.83-.83 4.98-4.98zm-9.13 9.13l.83.83-8.3 8.3-.83-.83 8.3-8.3zM25 60L0 35v-2l26 26h-1zm10.5-60L60 25.5v2L34.5 0h1zM60 55.5V60h-4.5L60 55.5zM0 4.5V0h4.5L0 4.5zM20 60L0 40v-2l22 22h-2zm10.5-60L60 30.5v2L29.5 0h1zM30 60L0 30v-2l32 32h-2zm10.5-60L60 20.5v2L19.5 0h1zM40 60L0 20v-2l42 42h-2zm10.5-60L60 10.5v2L9.5 0h1zM50 60L0 10v-2l52 52h-2zM52.5 0L60 7.5v2L49.5 0h3z' fill='%23110d14' fill-opacity='0.6' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.83-1.66 1.66-.83-.83.83-.83zM58.33 4.14l.83.83-4.98 4.98-.83-.83 4.98-4.98zm-9.13 9.13l.83.83-8.3 8.3-.83-.83 8.3-8.3zM25 60L0 35v-2l26 26h-1zm10.5-60L60 25.5v2L34.5 0h1zM60 55.5V60h-4.5L60 55.5zM0 4.5V0h4.5L0 4.5zM20 60L0 40v-2l22 22h-2zm10.5-60L60 30.5v2L29.5 0h1zM30 60L0 30v-2l32 32h-2zm10.5-60L60 20.5v2L19.5 0h1zM40 60L0 20v-2l42 42h-2zm10.5-60L60 10.5v2L9.5 0h1zM50 60L0 10v-2l52 52h-2zM52.5 0L60 7.5v2L49.5 0h3z' fill='%231e293b' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
     color: var(--text-primary);
     overflow-x: hidden;
     user-select: none;
 }
 
-/* Start Menu overlaying everything */
+/* Glassmorphism Premium */
+.glass-panel {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 2px 10px rgba(255,255,255,0.05);
+}
+
 #start-menu {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 1.5rem;
-    z-index: 5000;
+    display: flex; justify-content: center; align-items: flex-end;
+    padding-bottom: 2rem; z-index: 5000;
 }
 
 .bg-mirror-container {
@@ -44,686 +48,210 @@ body {
     background-color: #000;
 }
 
-.center-img {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    flex-shrink: 0;
-}
+.center-img { height: 100%; width: auto; object-fit: contain; flex-shrink: 0; }
+.side-mirror { flex-grow: 1; height: 100%; background-image: url("../imagem%20gerada.png"); background-size: auto 100%; background-repeat: repeat-x; }
+.left-mirror { transform: scaleX(-1); background-position: left center; }
+.right-mirror { transform: scaleX(-1); background-position: right center; }
 
-.side-mirror {
-    flex-grow: 1;
-    height: 100%;
-    background-image: url("../imagem%20gerada.png");
-    background-size: auto 100%;
-    background-repeat: repeat-x;
-}
+#start-menu .menu-content { text-align: center; max-width: 600px; width: 90%; padding: 0 1rem; background: transparent; backdrop-filter: none; box-shadow: none; border: none; }
+#start-menu h1 { font-size: 3.5rem; color: #fcd34d; text-transform: uppercase; margin-bottom: 0.5rem; text-shadow: 3px 3px 0px #78350f, 0 0 30px rgba(245,158,11,0.6); }
+#start-menu p { font-size: 1.4rem; color: #e2e8f0; margin-top: 1rem; margin-bottom: 3rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
 
-.left-mirror {
-    transform: scaleX(-1);
-    background-position: left center;
-}
+#app { display: flex; flex-direction: column; height: 100vh; }
 
-.right-mirror {
-    transform: scaleX(-1);
-    background-position: right center;
-}
-
-#start-menu .menu-content {
-    text-align: center;
-    max-width: 600px;
-    width: 90%;
-    padding: 0 1rem;
-    background: transparent;
-    backdrop-filter: none;
-    box-shadow: none;
-    border: none;
-}
-
-#start-menu h1 {
-    font-size: 3.5rem;
-    color: #fcd34d;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    text-shadow: 3px 3px 0px #78350f, 0 0 30px rgba(245,158,11,0.6);
-    line-height: 1.1;
-}
-
-#start-menu p {
-    font-size: 1.4rem;
-    color: #e2e8f0;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-    font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-}
-
-#app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-/* Header */
 .glass-header {
-    text-align: center;
-    padding: 1rem;
-    background: linear-gradient(to bottom, #100b14, #18111f);
-    border-bottom: 4px solid #3d3047;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-    position: relative;
-    z-index: 10;
+    text-align: center; padding: 1rem;
+    background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); z-index: 10;
 }
+.glass-header h1 { font-size: 2.2rem; color: #38bdf8; text-shadow: 0 0 15px rgba(56, 189, 248, 0.4); text-transform: uppercase; letter-spacing: 2px;}
 
-.glass-header h1 {
-    font-size: 2.5rem;
-    color: #fcd34d;
-    text-shadow: 2px 2px 0px #78350f, 0 0 20px rgba(245,158,11,0.5);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
+/* HUD Layout Horizontal Padrão */
+.hud { display: flex; justify-content: space-between; align-items: stretch; padding: 1.5rem 2rem; gap: 2rem; z-index: 10; }
 
-/* Dashboard / HUD: physical player boards */
-.hud {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: 1.5rem 2rem;
-    gap: 2rem;
-    z-index: 10;
-}
-
-.glass-panel {
-    background: #27272a;
-    border: 3px solid #3f3f46;
-    border-radius: 12px;
-    padding: 1.5rem;
-    /* Simulate physical thickness */
-    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.05), 0 10px 20px rgba(0, 0, 0, 0.6), 0 4px 0 #18181b;
-}
-
-.player-card {
-    flex: 1;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
+.player-card { flex: 1; text-align: center; transition: all 0.3s ease; }
 .player-card.active {
     border-color: var(--accent);
-    background: linear-gradient(to bottom, #3f3f46, #27272a);
-    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.1), 0 10px 25px rgba(245, 158, 11, 0.4), 0 4px 0 #b45309;
+    background: rgba(30, 41, 59, 0.9);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2), inset 0 2px 5px rgba(255, 255, 255, 0.1);
     transform: translateY(-4px);
 }
-
-.player-card h2 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    color: #e2e8f0;
-}
-
-.player-card span {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
+.player-card h2 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #e2e8f0; }
+.player-card span { font-size: 0.9rem; color: var(--text-muted); }
 
 .stats {
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    background: #18181b;
-    padding: 0.8rem;
-    border-radius: 8px;
-    border: 2px solid #000;
-    box-shadow: inset 0 4px 8px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.1);
+    display: flex; justify-content: space-around; font-size: 1.2rem; margin-top: 1rem;
+    background: rgba(0,0,0,0.4); padding: 0.8rem; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
-
 .stat { display: flex; align-items: center; gap: 0.4rem; font-weight: 700; }
-.stat b { color: #fbbf24; text-shadow: 1px 1px 2px #000; }
+.stat b { color: #fbbf24; }
 
-.current-node-pos {
-    margin-top: 1.5rem;
-    background: rgba(0,0,0,0.3);
-    padding: 0.8rem;
-    border-radius: 8px;
-    border: 1px solid #3f3f46;
-    text-align: center;
-}
-.current-node-pos .pos-label {
-    font-size: 0.7rem;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-}
-.current-node-pos strong {
-    display: block;
-    color: var(--accent);
-    font-size: 1.1rem;
-    font-weight: 800;
-}
-.current-node-pos span {
-    display: block;
-    color: #cbd5e1;
-    font-size: 0.85rem;
-    margin-top: 2px;
-}
+.current-node-pos { margin-top: 1.5rem; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+.current-node-pos .pos-label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.current-node-pos strong { display: block; color: var(--accent); font-size: 1.1rem; font-weight: 800; }
+.current-node-pos span { display: block; color: #cbd5e1; font-size: 0.85rem; margin-top: 2px; }
 
-.game-controls {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    min-width: 250px;
-}
+.game-controls { flex: 1; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; min-width: 250px; }
+#status-message { font-weight: 800; color: var(--accent); text-transform: uppercase; background: rgba(0,0,0,0.4); padding: 0.4rem 1.2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 0.5rem; }
 
-#status-message {
-    font-weight: 800;
-    color: var(--accent);
-    text-transform: uppercase;
-    background: #18181b;
-    padding: 0.4rem 1.2rem;
-    border-radius: 20px;
-    border: 2px solid #3f3f46;
-    margin-bottom: 0.5rem;
-}
-
-/* 3D Tactile Buttons */
+/* Botões 3D Modernos */
 .primary-btn {
-    background: linear-gradient(to bottom, #10b981, #047857);
-    color: white;
-    border: none;
-    padding: 1rem 2.5rem;
-    border-radius: 12px;
-    font-size: 1.2rem;
-    font-weight: 900;
-    cursor: pointer;
-    text-transform: uppercase;
-    box-shadow: 0 6px 0 #064e3b, 0 10px 15px rgba(0,0,0,0.5);
-    transition: all 0.1s;
+    background: linear-gradient(135deg, #0ea5e9, #0369a1); color: white; border: none;
+    padding: 1rem 2.5rem; border-radius: 12px; font-size: 1.2rem; font-weight: 900;
+    cursor: pointer; text-transform: uppercase;
+    box-shadow: 0 4px 0 #075985, 0 10px 15px rgba(0,0,0,0.4); transition: all 0.1s;
 }
-
-.primary-btn:active {
-    transform: translateY(6px);
-    box-shadow: 0 0px 0 #064e3b, 0 2px 5px rgba(0,0,0,0.5);
-}
-
-.primary-btn:disabled {
-    background: linear-gradient(to bottom, #64748b, #475569);
-    box-shadow: 0 6px 0 #334155, 0 10px 15px rgba(0,0,0,0.5);
-    cursor: not-allowed;
-    color: #94a3b8;
-}
+.primary-btn:active { transform: translateY(4px); box-shadow: 0 0px 0 #075985, 0 2px 5px rgba(0,0,0,0.4); }
+.primary-btn:disabled { background: linear-gradient(135deg, #475569, #334155); box-shadow: 0 4px 0 #1e293b; cursor: not-allowed; color: #94a3b8; }
 
 .secondary-btn {
-    background: #3f3f46;
-    color: #fff;
-    padding: 0.6rem 1.2rem;
-    border: 2px solid #52525b;
-    border-radius: 8px;
-    font-weight: 700;
-    box-shadow: 0 4px 0 #27272a, 0 6px 10px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: all 0.1s;
+    background: rgba(255,255,255,0.1); color: #fff; padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s;
 }
-
-.secondary-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 0px 0 #27272a;
-}
+.secondary-btn:hover { background: rgba(255,255,255,0.2); }
 
 #dice-result {
-    font-size: 3rem;
-    font-weight: 900;
-    color: #fff;
-    background: #ea580c;
-    width: 65px;
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    border: 3px solid #f97316;
+    font-size: 3rem; font-weight: 900; color: #fff; background: #ea580c;
+    width: 65px; height: 65px; display: flex; align-items: center; justify-content: center;
+    border-radius: 12px; border: 2px solid #fdba74;
     box-shadow: inset 0 0 15px rgba(0,0,0,0.3), 0 5px 15px rgba(0,0,0,0.6);
-    text-shadow: 2px 2px 0px #9a3412;
     margin-top: 5px;
 }
 
-/* Proper Biological Cell Matrix Area */
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 4rem;
-    align-items: center;
-    justify-content: center;
-    min-height: 0;
-}
+/* --- TABULEIRO CÉLULA ORGÂNICA --- */
+main { flex: 1; display: flex; flex-direction: column; padding: 2rem; align-items: center; justify-content: center; min-height: 0; }
 
-.board-scroll-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+.board-scroll-wrapper { width: 100%; display: flex; justify-content: center; height: 100%; align-items: center;}
 
 .board-area {
     width: 100%;
     max-width: 1400px;
     height: 100%;
-    min-height: 480px;
+    min-height: 500px;
+    max-height: 600px;
     position: relative;
-    /* Cell membrane look */
-    border-radius: 90px 110px 100px 130px;
-    background: radial-gradient(circle at 30% 50%, #083344, #164e63);
     
-    /* Textura de Parede Celular Orgânica (Camadas Biológicas) */
-    border: 10px solid #22d3ee;
+    /* Formato Cápsula/Oval Celular */
+    border-radius: 200px;
+    background: radial-gradient(circle at 30% 50%, #164e63, #082f49);
+    
+    /* Membrana Plasmática Premium */
+    border: 12px solid #fdba74; /* Cor parede externa */
     box-shadow: 
-        0 0 0 10px #083344, 
-        0 0 0 20px #06b6d4, 
-        0 40px 80px 25px rgba(0,0,0,0.9), 
-        inset 0 0 60px rgba(0,0,0,0.8), 
-        inset 0 0 20px #22d3ee;
+        0 0 0 6px #0ea5e9, /* Parede interna tech */
+        0 20px 50px 10px rgba(0,0,0,0.8), 
+        inset 0 0 60px rgba(0,0,0,0.6);
 }
 
-/* Beveled inner frame for depth */
-.board-area::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    border: 4px solid #18181b;
-    pointer-events: none;
-    z-index: 5;
-    border-radius: inherit;
-}
-
-.zone {
-    position: absolute;
-    box-shadow: none;
-}
-
-/* Apply a noise/texture over the board zones */
-.zone::after {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.12;
-    pointer-events: none;
-    mix-blend-mode: overlay;
-    z-index: 1;
-}
+.zone { position: absolute; box-shadow: none; }
+.zone::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); opacity: 0.08; pointer-events: none; mix-blend-mode: overlay; z-index: 1; }
 
 .citosol-zone {
-    top: 0; left: 0; width: 100%; height: 100%;
-    border-radius: inherit;
+    top: 0; left: 0; width: 50%; height: 100%;
+    border-radius: 200px 0 0 200px;
     overflow: hidden;
 }
 
 .mitocondria-zone {
-    /* Mitochondria organelle floating inside the cell */
-    position: absolute;
-    right: 3%;
-    top: 5%;
-    width: 58%;
-    height: 90%;
+    position: absolute; right: 3%; top: 10%; width: 45%; height: 80%;
+    /* Formato Feijão */
     background: radial-gradient(ellipse at center, #7f1d1d 0%, #450a0a 100%);
-    border-radius: 120px 80px 100px 140px; /* Bean / Oval shape */
-    border: 8px double #fca5a5; /* Outer and Inner membranes */
-    box-shadow: -15px 15px 40px rgba(0,0,0,0.7), inset 0 0 50px rgba(0,0,0,0.9);
-    overflow: hidden;
+    border-radius: 80px 150px 150px 80px; 
+    border: 6px double #fca5a5; 
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,0,0,0.9);
 }
 
-/* Cristae folds inside the mitochondria */
 .mitocondria-zone::after {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: inherit;
-    background-image: url("data:image/svg+xml,%3Csvg width='120' height='100' viewBox='0 0 120 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L30 45 M60 100 L60 55 M90 0 L90 45' stroke='rgba(252, 165, 165, 0.12)' stroke-width='18' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
-    background-size: 140px 100%;
-    pointer-events: none;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L20 40 M50 100 L50 60 M80 0 L80 40' stroke='rgba(252, 165, 165, 0.15)' stroke-width='12' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+    background-size: 100px 100%; pointer-events: none;
 }
 
-.zone-label {
-    position: absolute;
-    font-size: 3.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    z-index: 3;
-}
+.zone-label { position: absolute; font-size: 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 6px; z-index: 3; }
+.citosol-zone .zone-label { top: 2rem; left: 4rem; color: rgba(6, 182, 212, 0.2); }
+.mitocondria-zone .zone-label { top: 1rem; right: 2rem; color: rgba(252, 165, 165, 0.15); font-size: 2.5rem; }
 
-.citosol-zone .zone-label {
-    top: 2rem;
-    left: 4rem;
-    color: rgba(6, 182, 212, 0.15); /* Techy cyan faded */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
+.zone-bio-description { position: absolute; font-size: 1rem; color: rgba(255,255,255,0.4); font-weight: 700; z-index: 3; }
+.citosol-zone .zone-bio-description { bottom: 2rem; left: 4rem; }
+.mitocondria-zone .zone-bio-description { bottom: 1rem; right: 2rem; text-align: right; }
 
-.mitocondria-zone .zone-label {
-    top: 2rem;
-    right: 4rem;
-    color: rgba(252, 165, 165, 0.15);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-}
+#board-nodes { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
 
-.zone-bio-description {
-    position: absolute;
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.4);
-    font-weight: 700;
-    z-index: 3;
-}
-
-.citosol-zone .zone-bio-description {
-    bottom: 2rem;
-    left: 4rem;
-}
-
-.mitocondria-zone .zone-bio-description {
-    bottom: 2rem;
-    right: 4rem;
-    text-align: right;
-}
-
-#board-nodes {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 10;
-}
-
-/* Physical Nodes / Indentations */
+/* Nós Físicos Jateados */
 .node {
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 900;
-    font-size: 1.2rem;
-    transform: translate(-50%, -50%);
-    z-index: 20;
-    pointer-events: auto;
-    cursor: help;
-    
-    /* Indented slot look, dark grey slate */
-    background: #111827;
-    color: #64748b;
-    border: 4px solid #334155;
-    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.8), inset -4px -4px 10px rgba(255,255,255,0.05), 0 2px 0 rgba(255,255,255,0.2);
-    transition: all 0.2s;
+    position: absolute; width: 56px; height: 56px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 1.1rem;
+    transform: translate(-50%, -50%); z-index: 20; pointer-events: auto; cursor: help;
+    background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(5px); color: #94a3b8;
+    border: 3px solid rgba(255,255,255,0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: all 0.2s;
 }
+.node:hover { transform: translate(-50%, -50%) scale(1.1); background: rgba(30, 41, 59, 1); border-color: #fff; z-index: 100;}
+.node.type-event { background: rgba(120, 53, 15, 0.8); color: #fbbf24; border-color: #d97706; }
+.node.type-end { background: rgba(6, 78, 59, 0.8); color: #34d399; border-color: #10b981; width: 70px; height: 70px; }
 
-.node.type-event {
-    background: #78350f;
-    color: #fbbf24;
-    border-color: #b45309;
-    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.8), inset -4px -4px 10px rgba(255,165,0,0.1), 0 2px 0 rgba(255,255,255,0.2);
-}
-
-.node.type-end {
-    background: #064e3b;
-    color: #34d399;
-    border-color: #047857;
-    width: 76px;
-    height: 76px;
-    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.8), inset -4px -4px 10px rgba(0,255,100,0.1), 0 2px 0 rgba(255,255,255,0.2);
-}
-
-/* Embossed Card Tooltips */
+/* Tooltips Premium */
 .node-label {
-    position: absolute;
-    top: 125%;
-    left: 50%;
-    transform: translate(-50%, 15px);
-    width: 220px;
-    background: #fafaf9; /* playing card color */
-    color: #1c1917;
-    padding: 1rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-align: center;
-    border: 5px solid #e7e5e4;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.8), 0 0 0 1px #a8a29e inset;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 30;
-    /* subtle card texture */
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    position: absolute; top: 130%; left: 50%; transform: translate(-50%, 15px); width: 220px;
+    background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); color: #f8fafc;
+    padding: 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-align: center;
+    border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+    opacity: 0; pointer-events: none; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 30;
 }
+.node-label.label-up { top: auto; bottom: 130%; transform: translate(-50%, -15px); }
+.node:hover .node-label { opacity: 1; transform: translate(-50%, 0); }
+.node-label strong { color: #38bdf8; display: block; font-size: 1.1rem; margin-bottom: 4px; font-weight: 800; }
 
-.node-label::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent #e7e5e4 transparent;
-}
-
-.node-label.label-up {
-    top: auto;
-    bottom: 125%;
-    transform: translate(-50%, -15px);
-}
-
-.node-label.label-up::before {
-    bottom: auto;
-    top: 100%;
-    border-color: #e7e5e4 transparent transparent transparent;
-}
-
-.node:hover {
-    z-index: 100;
-}
-
-.node:hover .node-label {
-    opacity: 1;
-    transform: translate(-50%, 0);
-}
-
-.node-label strong {
-    color: #0284c7;
-    display: block;
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-    font-weight: 900;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 6px;
-}
-
-.node.type-event .node-label strong { color: #d97706; border-color: #fef3c7; }
-.node.type-end .node-label strong { color: #059669; border-color: #d1fae5; }
-
-/* 3D Player Tokens / Pins */
+/* Pinos Glow 3D */
 .player-token {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 40;
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    pointer-events: none;
-    
-    /* 3D plastic/glass physical effect */
-    border: 3px solid rgba(255,255,255,0.9);
-    box-shadow: inset 0 8px 10px rgba(255,255,255,0.6), inset 0 -4px 10px rgba(0,0,0,0.6),
-                0 10px 15px rgba(0,0,0,0.7), 0 20px 30px rgba(0,0,0,0.5);
+    position: absolute; width: 32px; height: 32px; border-radius: 50%; transform: translate(-50%, -50%); z-index: 40;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none;
+    border: 2px solid rgba(255,255,255,0.9); box-shadow: inset 0 4px 8px rgba(255,255,255,0.5), 0 5px 15px rgba(0,0,0,0.8);
 }
+.token-p1 { background: radial-gradient(circle at 30% 30%, #38bdf8, #0369a1); margin-top: -12px; margin-left: -12px; filter: drop-shadow(0 0 8px #38bdf8); }
+.token-p2 { background: radial-gradient(circle at 30% 30%, #f472b6, #be185d); margin-top: 12px; margin-left: 12px; filter: drop-shadow(0 0 8px #f472b6); }
 
-/* Shiny glare on token */
-.player-token::after {
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 20%;
-    width: 35%;
-    height: 25%;
-    background: rgba(255,255,255,0.9);
-    border-radius: 50%;
-    transform: rotate(-30deg);
-}
+/* Modals */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 9999; backdrop-filter: blur(5px); transition: opacity 0.3s; }
+.modal-overlay.hidden { opacity: 0; pointer-events: none; }
+.modal-content { background: rgba(30, 41, 59, 0.95); color: #f8fafc; max-width: 480px; width: 90%; text-align: center; padding: 3rem; transform: scale(0.9) translateY(20px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border-top: 1px solid rgba(255,255,255,0.2); }
+.modal-overlay:not(.hidden) .modal-content { transform: scale(1) translateY(0); }
+#rules-modal .modal-content { max-width: 650px; }
+.modal-content h2 { color: #f59e0b; font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 900; }
 
-/* Token Colors */
-.token-p1 {
-    background: radial-gradient(circle at 30% 30%, #38bdf8, #0369a1);
-    margin-top: -15px; margin-left: -15px;
-}
-.token-p2 {
-    background: radial-gradient(circle at 30% 30%, #f472b6, #be185d);
-    margin-top: 15px; margin-left: 15px;
-}
-
-/* Physical Event Cards (Modals) */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    backdrop-filter: blur(10px);
-    transition: opacity 0.3s;
-}
-
-.modal-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.modal-content {
-    background: #fdf6e3;
-    color: #292524;
-    max-width: 480px;
-    width: 90%;
-    text-align: center;
-    padding: 3rem;
-    border-radius: 12px;
-    border: 12px solid #fff;
-    box-shadow: 0 0 0 2px #d4d4d8, 0 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.05);
-    /* Card paper texture */
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
-    transform: scale(0.9) translateY(20px) rotate(-2deg);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.modal-overlay:not(.hidden) .modal-content {
-    transform: scale(1) translateY(0) rotate(0deg);
-}
-
-#rules-modal .modal-content {
-    max-width: 650px;
-    border-color: #e0f2fe;
-}
-
-.modal-content h2 {
-    color: #9a3412;
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 900;
-    letter-spacing: -1px;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
-}
-
-/* Responsive adjustments */
+/* --- RESPONSIVIDADE PROFISSIONAL --- */
 @media (max-width: 1024px) {
-    .hud { flex-direction: column; padding: 1rem; }
-    .board-area { margin: 1rem; border-width: 8px; min-height: 480px;}
-    .node { width: 50px; height: 50px; font-size: 1rem; }
+    .hud { flex-direction: column; padding: 1rem; gap: 1rem; }
+    .board-area { margin-top: 1rem; min-height: 400px; }
 }
 
 @media (max-width: 768px) {
-    main { padding: 0.5rem; overflow: hidden; }
+    main { padding: 0.5rem; }
     
-    /* Header Super Compacto VW */
-    .glass-header { padding: 0.6rem; }
-    .glass-header h1 { font-size: 6vw; line-height: 1.2; margin-bottom: 2px; }
-    .glass-header p { font-size: 3.5vw; letter-spacing: 0; }
+    /* Empilhamento Vertical Inteligente (HUD) */
+    .game-controls { order: -1; min-width: 100%; flex-direction: row; flex-wrap: wrap; padding: 1rem; }
+    #status-message { width: 100%; font-size: 1rem; }
+    .primary-btn#btn-roll { padding: 1rem; font-size: 1.2rem; flex: 1; }
+    #dice-result { width: 50px; height: 50px; font-size: 2rem; }
+    .player-card { width: 100%; padding: 1rem; }
+    .stats { flex-direction: row; flex-wrap: wrap; font-size: 1rem; }
     
-    /* Layout Vertical HUD */
-    .hud { padding: 0.5rem; gap: 0.5rem; }
+    /* Scroll Lateral para a Célula Orgânica (Preserva proporções) */
+    .board-scroll-wrapper { width: 100%; overflow-x: auto; padding: 1rem 0; align-items: flex-start; }
     
-    /* Controles Redesenhados (Compactos Lado a Lado) */
-    .game-controls { 
-        order: -1; min-width: 100%; border: 2px solid var(--accent); padding: 0.5rem; 
-        display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1vw;
-    }
-    #status-message { width: 100%; font-size: 3.5vw; padding: 1.5vw; margin: 0; }
-    .primary-btn#btn-roll { padding: 3vw 4vw; font-size: 4.5vw; flex: 1; }
-    #dice-result { width: 12vw; height: 12vw; font-size: 6vw; margin: 0; }
-    #btn-rules, #btn-reset { width: 100%; font-size: 3.5vw; padding: 2.5vw; margin-top: 0 !important; }
-    
-    .player-card { padding: 2vw; width: 100%; }
-    .player-card h2 { font-size: 4vw; }
-    .stats { flex-direction: row; flex-wrap: wrap; padding: 1vw; font-size: 3.5vw; gap: 0.5vw; }
-    .stat { justify-content: center; width: 30%; }
-    .current-node-pos { margin-top: 2vw; padding: 2vw; }
-    .current-node-pos strong { font-size: 3.5vw; }
-    
-    /* Tabuleiro "Shrink-to-Fit" Absoluto (Zero Scroll, Encaixe Perfeito no Celular) */
-    .board-scroll-wrapper { width: 100%; overflow: hidden; padding: 2vw 0; }
-    
+    /* A célula vira um scroll-container, garantindo visualização da anatomia oval sem espremer */
     .board-area {
-        min-width: 0; min-height: 0; 
-        width: 100%; 
-        aspect-ratio: 2.2 / 1; /* Retornando ao formato Original Horizontal Lado a Lado! */
-        margin: 0;
-        border-width: 1vw;
-        border-radius: 6vw 7vw 6vw 8vw;
-        box-shadow: 0 0 0 0.8vw #083344, 0 0 0 1.5vw #06b6d4, 0 2vw 4vw 1vw rgba(0,0,0,0.8), inset 0 0 3vw rgba(0,0,0,0.8);
+        min-width: 900px; /* Força scroll em telas pequenas */
+        height: 400px;
+        margin: 0 1rem;
+        border-radius: 25vw; /* Pill shape dinâmico */
+        border-width: 8px;
     }
     
-    /* Peças Redimensionadas Horizontalmente via VW */
-    .node { width: 7vw; height: 7vw; font-size: 2.2vw; border-width: 0.4vw; }
-    .node.type-end { width: 9vw; height: 9vw; font-size: 1.8vw; border-width: 0.6vw; }
-    .player-token { width: 4.5vw; height: 4.5vw; border-width: 0.3vw; }
-    .token-p1 { margin-top: -1.5vw; margin-left: -1.5vw; }
-    .token-p2 { margin-top: 1.5vw; margin-left: 1.5vw; }
-    
-    /* Trilhas Dinâmicas de Traçado SVG (Escalando com overrides VW) */
-    svg line[stroke-width="16"] { stroke-width: 1.8vw !important; }
-    svg line[stroke-width="10"] { stroke-width: 1.1vw !important; }
-    svg line[stroke-width="4"] { stroke-width: 0.5vw !important; }
-    
-    /* Zonas Originais Restauradas (Lado a Lado) na Horizontal */
-    .citosol-zone {
-        width: 38%; height: 100%;
-        left: 0; top: 0;
-        border-bottom: none;
-        border-right: 2px dashed rgba(255,255,255,0.2);
-        border-radius: 6vw 0 0 8vw;
-    }
-    .mitocondria-zone {
-        width: 62%; height: 100%;
-        left: auto; right: 0; top: 0;
-        border-radius: 0 7vw 6vw 0;
-    }
-    
-    /* Textos do Fundo Escalados e Reposicionados Originalmente */
-    .zone-label { font-size: 6vw; letter-spacing: 0.3vw; opacity: 0.3; }
-    .citosol-zone .zone-label { top: 2vw; left: 2vw; }
-    .citosol-zone .zone-bio-description { bottom: 2vw; left: 2vw; top: auto; right: auto; max-width: 80%; text-align: left; }
-    
-    .mitocondria-zone .zone-label { top: 2vw; right: 2vw; }
-    .mitocondria-zone .zone-bio-description { bottom: 2vw; right: 2vw; top: auto; left: auto; max-width: 80%; text-align: right; }
-    
-    /* Tooltips */
-    .node-label { width: 35vw; font-size: 2.5vw; padding: 2vw; border-width: 1vw; }
-    .node-label strong { font-size: 3vw; margin-bottom: 0.5vw; }
-
-    /* Modal / Start Menu Fluid Setup */
-    #start-menu h1 { font-size: 10vw; text-shadow: 0.5vw 0.5vw 0px #78350f, 0 0 3vw rgba(245,158,11,0.6); }
-    #start-menu p { font-size: 4vw; margin-bottom: 5vw; }
-    .menu-content { width: 95%; border: none; padding: 0 2vw; }
-    #btn-start { padding: 4vw; font-size: 5vw; border-radius: 2vw; margin-bottom: 2vw; }
+    .mitocondria-zone { border-radius: 40px 80px 80px 40px; }
+    .zone-label { font-size: 2rem; }
+    .citosol-zone .zone-label { top: 1rem; left: 2rem; }
+    .mitocondria-zone .zone-label { top: 0.5rem; right: 1rem; font-size: 1.8rem; }
 }
