@@ -317,7 +317,7 @@ main {
     position: relative;
     
     /* AQUI ESTÁ A CORREÇÃO: mude de .jpg para .png */
-    background-image: url("tabuleiro horizontal.png"); 
+    background-image: url("tabuleiro horizontal.jpg"); 
     
     background-size: contain;
     background-repeat: no-repeat;
