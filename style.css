@@ -326,7 +326,7 @@ main {
 /* --- Exibição e estilo dos Títulos de Fundo --- */
 .zone {
     position: absolute;
-    top: 2%; /* Afasta um pouquinho do teto */
+    top: 2%; /* Mantém grudado no teto */
     padding: 1rem 2rem;
     pointer-events: none;
     z-index: 5;
@@ -347,22 +347,23 @@ main {
 }
 
 .zone-label {
-    font-size: 2.2rem; /* Diminuído para não sobrepor as casas */
+    font-size: 1.8rem; /* Reduzido para desocupar espaço */
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.4); 
+    color: #ffffff; 
+    opacity: 0.4; /* Efeito marca d'água elegante */
     text-transform: uppercase;
     letter-spacing: 3px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 8px rgba(0,0,0,1);
     margin-bottom: 0.2rem;
-    line-height: 1; /* Deixa o título mais compacto */
+    line-height: 1;
 }
 
 .zone-bio-description {
-    font-size: 1rem; /* Subtítulo menor e elegante */
+    font-size: 0.9rem; /* Subtítulo mais enxuto */
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.6);
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.9);
-    max-width: 300px; /* Impede que o texto invada o meio do tabuleiro */
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 5px rgba(0,0,0,1);
+    max-width: 250px; /* Impede que o texto invada o meio */
 }
 
 #board-nodes {

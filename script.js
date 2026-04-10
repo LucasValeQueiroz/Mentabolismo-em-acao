@@ -1,31 +1,34 @@
 // --- Game Data ---
 const nodes = [
-    // Glicólise Path (0-4) -> Citosol (Esquerda, parte superior)
-    { id: 0, x: 8, y: 25, name: "Glicose", desc: "Entra na célula", zone: "citosol", type: "normal" },
-    { id: 1, x: 20, y: 25, name: "Investimento", desc: "Hexoquinase: Gasto de -2 ATP", zone: "citosol", effect: { atp: -2 }, type: "normal" },
-    { id: 2, x: 32, y: 25, name: "Clivagem", desc: "Surgem trioses (Aldolase)", zone: "citosol", type: "normal" },
-    { id: 3, x: 32, y: 40, name: "Pagamento", desc: "Gera energia: +4 ATP, +2 NADH", zone: "citosol", effect: { atp: 4, nadh: 2 }, type: "normal" },
-    { id: 4, x: 40, y: 50, name: "Piruvato", desc: "Produto final glicolítico", zone: "citosol", type: "event" },
+    // Glicólise Path (0-4) -> Citosol 
+    // Descemos o Y de 25 para 35 para limpar o texto superior esquerdo perfeitamente!
+    { id: 0, x: 8, y: 35, name: "Glicose", desc: "Entra na célula", zone: "citosol", type: "normal" },
+    { id: 1, x: 20, y: 35, name: "Investimento", desc: "Hexoquinase: Gasto de -2 ATP", zone: "citosol", effect: { atp: -2 }, type: "normal" },
+    { id: 2, x: 32, y: 35, name: "Clivagem", desc: "Surgem trioses (Aldolase)", zone: "citosol", type: "normal" },
+    { id: 3, x: 32, y: 45, name: "Pagamento", desc: "Gera energia: +4 ATP, +2 NADH", zone: "citosol", effect: { atp: 4, nadh: 2 }, type: "normal" },
+    { id: 4, x: 42, y: 52, name: "Piruvato", desc: "Produto final glicolítico", zone: "citosol", type: "event" },
 
-    // Beta-Oxidação Path (5-9) -> Citosol e Mitocôndria (Esquerda, parte inferior)
-    { id: 5, x: 8, y: 75, name: "Ácido Graxo", desc: "Quebra de lipídio", zone: "citosol", type: "normal" },
-    { id: 6, x: 20, y: 75, name: "Ativação", desc: "Uso de Acil-CoA: -2 ATP", zone: "citosol", effect: { atp: -2 }, type: "normal" },
-    { id: 7, x: 32, y: 75, name: "Carnitina", desc: "Translocação mitocondrial", zone: "mitocondria", type: "event" },
-    { id: 8, x: 42, y: 75, name: "Beta-Ox 1", desc: "Primeiro turno: +1 NADH, +1 FADH₂", zone: "mitocondria", effect: { nadh: 1, fadh: 1 }, type: "normal" },
-    { id: 9, x: 44, y: 62, name: "Beta-Ox 2", desc: "Ciclos seguintes: +1 NADH, +1 FADH₂", zone: "mitocondria", effect: { nadh: 1, fadh: 1 }, type: "normal" },
+    // Beta-Oxidação Path (5-9) -> Citosol e Mitocôndria
+    { id: 5, x: 8, y: 80, name: "Ácido Graxo", desc: "Quebra de lipídio", zone: "citosol", type: "normal" },
+    { id: 6, x: 20, y: 80, name: "Ativação", desc: "Uso de Acil-CoA: -2 ATP", zone: "citosol", effect: { atp: -2 }, type: "normal" },
+    { id: 7, x: 34, y: 80, name: "Carnitina", desc: "Translocação mitocondrial", zone: "mitocondria", type: "event" },
+    { id: 8, x: 46, y: 80, name: "Beta-Ox 1", desc: "Primeiro turno: +1 NADH, +1 FADH₂", zone: "mitocondria", effect: { nadh: 1, fadh: 1 }, type: "normal" },
+    { id: 9, x: 53, y: 66, name: "Beta-Ox 2", desc: "Ciclos seguintes: +1 NADH, +1 FADH₂", zone: "mitocondria", effect: { nadh: 1, fadh: 1 }, type: "normal" },
 
-    // Encruzilhada (10) -> NA BORDA DA MEMBRANA
-    { id: 10, x: 51, y: 50, name: "Acetil-CoA", desc: "Interseção universal", zone: "mitocondria", type: "normal" },
+    // Encruzilhada (10) -> Posicionado exatamente na entrada visual da Mitocôndria
+    { id: 10, x: 53, y: 52, name: "Acetil-CoA", desc: "Interseção universal", zone: "mitocondria", type: "normal" },
 
-    // Krebs Cycle (11-14) -> Matriz Mitocondrial (Reposicionado para encaixar o desenho)
-    { id: 11, x: 61, y: 50, name: "Citrato", desc: "Condensação inicial", zone: "mitocondria", type: "normal" },
-    { id: 12, x: 70, y: 28, name: "Descarboxilação", desc: "Isocitrato para alfa-KG: +2 NADH", zone: "mitocondria", effect: { nadh: 2 }, type: "normal" },
-    { id: 13, x: 79, y: 50, name: "Fosforilação", desc: "Succinil-CoA > Succinato: +1 ATP", zone: "mitocondria", effect: { atp: 1 }, type: "event" },
-    { id: 14, x: 70, y: 72, name: "Malato", desc: "Regeneração final: +1 FADH₂, +1 NADH", zone: "mitocondria", effect: { fadh: 1, nadh: 1 }, type: "normal" },
+    // Krebs Cycle (11-14) -> Matriz Mitocondrial
+    // Citrato posicionado do outro lado da membrana, formando a "ponte"
+    // Descarboxilação (12) desceu para Y:38 para não atropelar o texto superior direito
+    { id: 11, x: 63, y: 52, name: "Citrato", desc: "Condensação inicial", zone: "mitocondria", type: "normal" },
+    { id: 12, x: 72, y: 38, name: "Descarboxilação", desc: "Isocitrato para alfa-KG: +2 NADH", zone: "mitocondria", effect: { nadh: 2 }, type: "normal" },
+    { id: 13, x: 82, y: 52, name: "Fosforilação", desc: "Succinil-CoA > Succinato: +1 ATP", zone: "mitocondria", effect: { atp: 1 }, type: "event" },
+    { id: 14, x: 72, y: 68, name: "Malato", desc: "Regeneração final: +1 FADH₂, +1 NADH", zone: "mitocondria", effect: { fadh: 1, nadh: 1 }, type: "normal" },
 
-    // Cadeia Respiratória e Fim (15-16)
-    { id: 15, x: 88, y: 72, name: "Cadeia Respiratória", desc: "Fosforilação Oxidativa", zone: "mitocondria", effect: "exchange", type: "event" },
-    { id: 16, x: 88, y: 50, name: "FIM", desc: "Contagem de rentabilidade", zone: "mitocondria", effect: "end", type: "end" },
+    // Cadeia Respiratória e Fim (15-16) -> Encaixados nas cristas
+    { id: 15, x: 92, y: 68, name: "Cadeia", desc: "Fosforilação Oxidativa", zone: "mitocondria", effect: "exchange", type: "event" },
+    { id: 16, x: 92, y: 52, name: "FIM", desc: "Contagem de rentabilidade", zone: "mitocondria", effect: "end", type: "end" },
 ];
 
 
