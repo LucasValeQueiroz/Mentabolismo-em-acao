@@ -316,8 +316,9 @@ main {
     min-height: 480px;
     position: relative;
     
-    /* INTEGRATION OF THE NEW BOARD IMAGE */
-    background-image: url("tabuleiro horizontal.jpg");
+    /* AQUI ESTÁ A CORREÇÃO: mude de .jpg para .png */
+    background-image: url("tabuleiro horizontal.png"); 
+    
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
