@@ -105,18 +105,22 @@ body {
 }
 
 /* Header */
+/* Localize a classe .glass-header e atualize as propriedades: */
 .glass-header {
     text-align: center;
-    padding: 1rem;
-    background: linear-gradient(to bottom, #100b14, #18111f);
-    border-bottom: 4px solid #3d3047;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    padding: 1.5rem; /* Aumentado para dar mais destaque */
+    background: linear-gradient(to bottom, #18111f, #100b14);
+    border-top: 4px solid #3d3047;    /* Borda agora no topo para separar do HUD */
+    border-bottom: 4px solid #3d3047; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     position: relative;
-    z-index: 10;
+    z-index: 5;
+    margin: 1rem 0; /* Espaçamento externo para não ser sobreposto */
+    width: 100%;
 }
 
 .glass-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem; /* Leve redução para caber melhor entre os elementos */
     color: #fcd34d;
     text-shadow: 2px 2px 0px #78350f, 0 0 20px rgba(245,158,11,0.5);
     letter-spacing: 2px;
