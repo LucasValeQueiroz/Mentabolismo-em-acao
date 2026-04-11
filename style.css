@@ -765,7 +765,7 @@ main {
 }
 /* Espaço em branco customizável */
 .spacer {
-    height: 5px; /* Ajuste este valor para aumentar ou diminuir o espaço */
+    height: 500px; /* Ajuste este valor para aumentar ou diminuir o espaço */
     width: 100%;
     display: block;
     pointer-events: none; /* Garante que o espaço não interfira em cliques */
