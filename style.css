@@ -111,6 +111,7 @@ body {
 /* 1. Adicione margem ao cabeçalho para empurrar o conteúdo de baixo */
 /* Garanta que o header não flutue sobre os outros */
 .glass-header {
+    text-align: center;
     z-index: 5;        /* Menor que o HUD para não dar erro de clique */
     margin-bottom: 0;  /* O spacer já fará o trabalho */
 }
