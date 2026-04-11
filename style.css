@@ -756,10 +756,63 @@ main {
         transform: translate(-50%, 0) rotate(-90deg);
     }
     
-    /* Keep background labels legible by rotating them back */
-    .citosol-zone .zone-label, .mitocondria-zone .zone-label {
-        transform: rotate(-90deg);
+    .zone {
+        width: 100% !important; 
+        height: auto !important;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: transparent !important; /* Remove gradientes que ficam estranhos rotacionados */
     }
+
+    /* 2. Posicionar o Citosol no topo do celular (que era o lado esquerdo do tabuleiro) */
+    .citosol-zone {
+        top: 0 !important;
+        left: 0 !important;
+        width: 15% !important; /* No board rotacionado, a largura original vira a altura */
+        height: 100% !important;
+        border-right: none !important;
+        justify-content: flex-start !important;
+        padding-top: 5vw !important;
+    }
+
+    /* 3. Posicionar a Mitocôndria na base do celular (que era o lado direito do tabuleiro) */
+    .mitocondria-zone {
+        top: 0 !important;
+        right: 0 !important;
+        width: 20% !important; /* Espaço um pouco maior para a descrição longa */
+        height: 100% !important;
+        justify-content: flex-end !important;
+        padding-bottom: 5vw !important;
+    }
+
+    /* 4. Girar os rótulos e descrições de volta para a horizontal */
+    .zone-label, .zone-bio-description {
+        transform: rotate(-90deg); /* Desfaz a rotação do tabuleiro para o texto */
+        text-align: center;
+        white-space: nowrap; /* Evita que o texto quebre de forma estranha */
+        display: block;
+        width: 90vw; /* Define uma largura para o texto centralizar em relação à tela do celular */
+    }
+
+    .zone-label {
+        font-size: 5vw !important;
+        opacity: 0.6;
+        margin: 0 !important;
+    }
+
+    .zone-bio-description {
+        font-size: 3vw !important;
+        margin-top: 15vw !important; /* Espaçamento entre o título e a descrição após a rotação */
+    }
+
+    /* Ajuste específico para a descrição longa da Mitocôndria */
+    .mitocondria-zone .zone-bio-description {
+        margin-top: 25vw !important; 
+    }
+
 }
 /* Espaço em branco customizável */
 .spacer {
