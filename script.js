@@ -186,10 +186,10 @@ function renderBoard() {
 
     // Renderiza a imagem do Ciclo de Krebs no centro exato do losango
     const krebsImg = document.createElement('img');
-    krebsImg.src = 'ciclo de krebs.jpg'; 
+    krebsImg.src = 'ciclo de krebs.png'; 
     krebsImg.className = 'krebs-center-img';
     boardContainer.appendChild(krebsImg);
-    
+
     updateTokenPositions();
 }
 
