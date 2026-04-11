@@ -34,7 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0; /* <- Alterado para 0 para colar na base */
     z-index: 5000;
 }
 
@@ -820,4 +820,17 @@ main {
     width: 100%;
     display: block;
     pointer-events: none;
+}
+.krebs-center-img {
+    position: absolute;
+    left: 75%;
+    top: 52%;
+    transform: translate(-50%, -50%); /* Centraliza a imagem exatamente no ponto 75,52 */
+    width: 80px;  /* Deixa a imagem menorzinha */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%; /* Opcional: Arredonda a imagem para combinar melhor com as casas */
+    z-index: 5; /* Mantém a imagem sob as casas do tabuleiro (z-index 20) */
+    opacity: 0.8; /* Leve transparência para integrar suavemente no fundo */
+    mix-blend-mode: multiply; /* Remove o fundo branco da imagem (caso tenha) misturando-a com o tabuleiro escuro */
 }
