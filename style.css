@@ -106,16 +106,38 @@ body {
 
 /* Header */
 /* Localize a classe .glass-header e atualize as propriedades: */
+/* 1. Adicione margem ao cabeçalho para empurrar o conteúdo de baixo */
 .glass-header {
     text-align: center;
-    padding: 1.5rem; /* Aumentado para dar mais destaque */
-    background: linear-gradient(to bottom, #18111f, #100b14);
-    border-top: 4px solid #3d3047;    /* Borda agora no topo para separar do HUD */
-    border-bottom: 4px solid #3d3047; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 5;
-    margin: 1rem 0; /* Espaçamento externo para não ser sobreposto */
+    padding: 1rem;
+    background: linear-gradient(to bottom, #100b14, #18111f);
+    border-bottom: 4px solid #3d3047;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    position: relative; /* Garante que ele siga o fluxo normal */
+    z-index: 10;
+    margin-bottom: 2rem; /* ESPAÇO ADICIONADO PARA NÃO "COMER" O HUD */
+}
+
+/* 2. Ajuste o container principal para não forçar tudo para o topo ou centro demais */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 4rem; /* Reduzi o padding superior para controlar melhor o espaço */
+    align-items: center;
+    justify-content: flex-start; /* MUDADO DE 'center' PARA 'flex-start' */
+    gap: 2rem; /* Adiciona um espaço automático entre o HUD e o Tabuleiro */
+    min-height: 0;
+}
+
+/* 3. Garante que o HUD não tenha margens negativas que o puxem para cima */
+.hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 2rem; /* Removido o padding superior excessivo */
+    gap: 2rem;
+    z-index: 10;
     width: 100%;
 }
 
