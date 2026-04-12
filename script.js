@@ -312,10 +312,10 @@ function handleNodeArrival(playerKey, pathIdx, path) {
 }
 
 
-const sfxWin = new Audio('../ElevenLabs_ambiente_de_celebração_animada,_grupo_de_mulheres_elegantes_aplaudindo_e_torcendo_com_entusiasmo,_ri.mp3');
-const sfxDice = new Audio('../ElevenLabs_rolando_dados.mp3');
-const sfxBad = new Audio('../universfield-ooh-123103.mp3');
-const sfxMenu = new Audio('../starostin-comedy-cartoon-funny-background-music-492540.mp3');
+const sfxWin = new Audio('ElevenLabs_ambiente_de_celebração_animada,_grupo_de_mulheres_elegantes_aplaudindo_e_torcendo_com_entusiasmo,_ri.mp3');
+const sfxDice = new Audio('ElevenLabs_rolando_dados.mp3');
+const sfxBad = new Audio('universfield-ooh-123103.mp3');
+const sfxMenu = new Audio('starostin-comedy-cartoon-funny-background-music-492540.mp3');
 sfxMenu.loop = true;
 
 
