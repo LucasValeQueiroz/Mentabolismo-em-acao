@@ -467,11 +467,15 @@ document.getElementById('btn-start').addEventListener('click', (e) => {
 });
 
 
-document.getElementById('btn-menu-rules').addEventListener('click', (e) => {
-    e.stopPropagation();
-    document.getElementById('rules-modal').classList.remove('hidden');
-    playMenuMusic(); // Tenta tocar caso ainda não tenha ativado
-});
+// A verificação 'if' garante que o JS só adicione o evento se o botão existir no HTML
+const btnMenuRules = document.getElementById('btn-menu-rules');
+if (btnMenuRules) {
+    btnMenuRules.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('rules-modal').classList.remove('hidden');
+        playMenuMusic();
+    });
+}
 
 
 document.getElementById('btn-roll').addEventListener('click', rollDice);
